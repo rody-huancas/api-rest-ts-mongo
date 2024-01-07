@@ -1,12 +1,15 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import { deleteItem, getItem, getItems, postItem, updateItem } from "../controllers/item";
 
 const router = Router();
 
 /*
 * https://localhost:3000/items [GET]
 */
-router.get("/", (req: Request, res: Response) => {
-    res.send({data: "AQUI_VAN_LOS_MODELOS"})
-});
+router.get("/", getItems);
+router.get("/:id", getItem);
+router.post("/", postItem);
+router.put("/:id", updateItem);
+router.delete("/:id", deleteItem);
 
 export { router };
