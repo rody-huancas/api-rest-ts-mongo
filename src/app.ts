@@ -13,4 +13,4 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 db().then(()=> console.log("Connect to database successfully!"));
-app.listen(PORT);
+app.listen(PORT, ()=> console.log("Connect to port ", PORT));
