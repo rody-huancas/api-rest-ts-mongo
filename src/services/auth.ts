@@ -27,10 +27,12 @@ const loginUser = async ({email, password}: Auth) => {
 
     const token = await generateToken(checkIs.email);
     const data = {
-        token,
-        user: checkIs
-    }
-
+        _id: checkIs._id,
+        name: checkIs.name,
+        email: checkIs.email,
+        token
+    };
+    
     return data;
 }
 

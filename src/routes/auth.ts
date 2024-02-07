@@ -11,4 +11,4 @@ const router = Router();
 router.post("/register", registerCrtl);
 router.post("/login", loginCrtl);
 
-export { router };
+export { router };  
