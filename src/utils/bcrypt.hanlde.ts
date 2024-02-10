@@ -1,9 +1,11 @@
 import { compare, hash } from "bcryptjs"
 
 const encrypt = async (pass: string) => {
-    const passwordHash = await hash(pass, 8)
+    const saltRounds = 10;
+    const passwordHash = await hash(pass, saltRounds);
     return passwordHash;
 }
+
 
 const verified = async (pass: string, passHash: string) => {
     const isCorrect = await compare(pass, passHash);

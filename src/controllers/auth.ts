@@ -2,8 +2,17 @@ import { Request, Response } from "express"
 import { loginUser, registerNewUser } from "../services/auth"
 
 const registerCrtl = async ({ body }: Request, res: Response) => {
-    const response = await registerNewUser(body);
-    res.send(response);
+    try {
+        const response = await registerNewUser(body);
+        if (response === "ALREADY_USER") {
+            res.status(400).send("Usuario ya existe");
+        } else {
+            res.send(response);
+        }
+    } catch (error) {
+        console.error("Error al registrar usuario:", error);
+        res.status(500).send("Error al registrar usuario");
+    }
 }
 
 const loginCrtl = async ({ body }: Request, res: Response) => {
